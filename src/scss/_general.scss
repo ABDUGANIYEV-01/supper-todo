@@ -1,0 +1,41 @@
+html{
+    box-sizing: border-box;
+}
+
+*, 
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-size: 16px;
+    height: 100vh;
+    background: rgb(104,234,204);
+    background: linear-gradient(#68EACC 0%, #497BE8 100%);
+    font-family: 'Poppins';
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p{
+    margin: 0;
+}
+
+img{
+    // display: inline-block;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
