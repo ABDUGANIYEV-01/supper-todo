@@ -1,33 +1,37 @@
+import { useRef } from 'react'
 import Delete from '../../Assets/svg/Delete.svg'
 import Edit from '../../Assets/svg/edit.svg'
 
 
-const TodoList = ({todo, delet}) => {
+const TodoList = ({ todo, setTodoArr }) => {
 
-    function editTodo(event){
-        let button = event.target.closest('button')
-        let buttonOk = button.previousElementSibling
-        let todoText = button.nextElementSibling
-        button.style.display="none"
-        buttonOk.style.display="flex"
-        todoText.contentEditable = true
+    const editBtn = useRef()
+    const okBtn = useRef()
+    const todoRef = useRef()
+
+    function editTodo(){
+        editBtn.current.style.display = "none"
+        okBtn.current.style.display = 'flex'
+        todoRef.current.contentEditable = true
     }
 
-    function saveEdit(event){
-        let buttonOk = event.target.closest('button')
-        let buttonEdit = buttonOk.nextElementSibling
-        let todoText = buttonEdit.nextElementSibling
-        buttonOk.style.display="none"
-        buttonEdit.style.display="flex"
-        todoText.contentEditable = false
+    function saveEdit(){
+        okBtn.current.style.display="none"
+        editBtn.current.style.display="flex"
+        todoRef.current.contentEditable = false
+        // setTodoArr(newArr)
+    }
+
+    function deletTodo(){
+        setTodoArr(state => state.filter(item => item.id !== todo.id))
     }
     
     return (
-        <div className="todoList" data-id={todo.id}>
-            <button className="todoList__ok" onClick={ (event)=> saveEdit(event) }>ok</button>
-            <button className="todoList__edit" onClick={ (event)=> editTodo(event) }><img src={Edit}/></button>
-            <p className="todoList__text">{todo.title}</p>
-            <button className="todoList__btn" onClick={()=>{delet(todo.id)}}><img src={Delete} /></button>
+        <div className="todoList">
+            <button className="todoList__ok" ref={okBtn} onClick={saveEdit}>ok</button>
+            <button className="todoList__edit" ref={editBtn} onClick={editTodo}><img src={Edit}/></button>
+            <p className="todoList__text" ref={todoRef}>{todo.title}</p>
+            <button className="todoList__btn" onClick={deletTodo}><img src={Delete} /></button>
         </div>
     )
 }

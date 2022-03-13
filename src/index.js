@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './scss/main.scss';
-import Todo from './Components/Todo/Todo.jsx';
 import reportWebVitals from './reportWebVitals';
+import Todo from './App';
 
 ReactDOM.render(
   <React.StrictMode>
