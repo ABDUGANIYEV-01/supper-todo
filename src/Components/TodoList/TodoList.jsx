@@ -29,9 +29,9 @@ const TodoList = ({ todo, setTodoArr }) => {
     return (
         <div className="todoList">
             <button className="todoList__ok" ref={okBtn} onClick={saveEdit}>ok</button>
-            <button className="todoList__edit" ref={editBtn} onClick={editTodo}><img src={Edit}/></button>
+            <button className="todoList__edit" ref={editBtn} onClick={editTodo}><img src={Edit} alt="editBtn"/></button>
             <p className="todoList__text" ref={todoRef}>{todo.title}</p>
-            <button className="todoList__btn" onClick={deletTodo}><img src={Delete} /></button>
+            <button className="todoList__btn" onClick={deletTodo}><img src={Delete} alt="deletBtn" /></button>
         </div>
     )
 }

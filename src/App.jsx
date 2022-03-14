@@ -11,7 +11,7 @@ const Todo = () => {
 
     
     if(localStorage.getItem('todos')){
-        if(JSON.parse(localStorage.getItem('todos')).length !== 0 && todoArr.length == 0)
+        if(JSON.parse(localStorage.getItem('todos')).length != 0 && todoArr.length == 0)
         setTodoArr(JSON.parse(localStorage.getItem('todos')))
     }
 
