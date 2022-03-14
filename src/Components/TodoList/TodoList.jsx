@@ -3,7 +3,7 @@ import Delete from '../../Assets/svg/Delete.svg'
 import Edit from '../../Assets/svg/edit.svg'
 
 
-const TodoList = ({ todo, setTodoArr }) => {
+const TodoList = ({ todo, setTodoArr, todoArr }) => {
 
     const editBtn = useRef()
     const okBtn = useRef()
@@ -19,7 +19,15 @@ const TodoList = ({ todo, setTodoArr }) => {
         okBtn.current.style.display="none"
         editBtn.current.style.display="flex"
         todoRef.current.contentEditable = false
-        // setTodoArr(newArr)
+        let editedTodos = todoArr.map(element => {
+            if(element.id === todo.id){
+               element.title = todoRef.current.textContent
+               return element
+            } else {
+                return element
+            }
+        });
+        setTodoArr(editedTodos)
     }
 
     function deletTodo(){

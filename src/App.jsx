@@ -1,26 +1,21 @@
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import TodoList from "./Components/TodoList/TodoList"
 
 
 
 const Todo = () => {
     
-    const [todoArr, setTodoArr] = useState([])
+    const [todoArr, setTodoArr] = useState(JSON.parse(localStorage.getItem('todos')) || [])
     console.log(todoArr);
     const inputRef = useRef()
 
-    
-    if(localStorage.getItem('todos')){
-        if(JSON.parse(localStorage.getItem('todos')).length !== 0 && todoArr.length === 0)
-        setTodoArr(JSON.parse(localStorage.getItem('todos')))
-    }
-
-
-    localStorage.setItem('todos', JSON.stringify(todoArr))
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todoArr))
+    }, [todoArr])
 
 
     function addTodo() {
-        if(inputRef.current.value !== ''){
+        if(inputRef.current.value.trim() !== ''){
         let todoId = todoArr.length > 0 ? todoArr[todoArr.length-1].id + 1 : 1
 
         let todo = {
@@ -52,7 +47,7 @@ const Todo = () => {
 
                     <div className="todo__block">
                         {
-                            todoArr.map((elem, index)=> <TodoList key={index} todo={elem} setTodoArr={setTodoArr} />)
+                            todoArr.map((elem, index)=> <TodoList key={index} todo={elem} setTodoArr={setTodoArr} todoArr={todoArr} />)
                         }
                     </div>
 
