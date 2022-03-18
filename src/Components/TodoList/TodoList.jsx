@@ -12,12 +12,14 @@ const TodoList = ({ todo, setTodoArr, todoArr }) => {
     function editTodo(){
         editBtn.current.style.display = "none"
         okBtn.current.style.display = 'flex'
+        todoRef.current.style.border = "1px solid #8E49E8"
         todoRef.current.contentEditable = true
     }
 
     function saveEdit(){
         okBtn.current.style.display="none"
         editBtn.current.style.display="flex"
+        todoRef.current.style.border = "none"
         todoRef.current.contentEditable = false
         let editedTodos = todoArr.map(element => {
             if(element.id === todo.id){
