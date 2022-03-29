@@ -36,7 +36,7 @@ const Todo = () => {
         <div className="container">
             <div className="block">
                 <div className="card">
-                    <h2 className="title">Todo app</h2>
+                    <h2 className="title">Abdusattor ish jadvali</h2>
 
 
                     <div className="todo">
